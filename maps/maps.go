@@ -96,6 +96,7 @@ func merge[M ~map[K]V, K comparable, V any](to, from M) {
 }
 //MergeMaps merge all maps to newM map
 func MergeMaps[M ~map[K]V, K comparable, V any](m ...M) (newM M) {
+	newM = make(map[K]V)
 	for _, item := range m {
 		merge(newM, item)
 	}
