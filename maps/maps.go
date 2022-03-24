@@ -88,3 +88,16 @@ func DeleteFunc[M ~map[K]V, K comparable, V any](m M, del func(K, V) bool) {
 		}
 	}
 }
+
+func merge[M ~map[K]V, K comparable, V any](to, from M) {
+	for k, v := range from {
+		to[k] = v
+	}
+}
+//MergeMaps merge all maps to newM map
+func MergeMaps[M ~map[K]V, K comparable, V any](m ...M) (newM M) {
+	for _, item := range m {
+		merge(newM, item)
+	}
+	return
+}
